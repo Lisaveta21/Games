@@ -18,14 +18,17 @@ namespace Games
             "Самая длинная река?",
             "Самая большая страна?"
             };
-            string[] answers = { "Эверест", "Амазонка","Россия"};
+            string[] answers = { "Эверест", "Амазонка", "Россия" };
+            string[] OtherAnswers = { "Джубга, Эверест", "Москва - река, Амазонка", "Китай, Россия" };
             int countOfRightAnswers = 0;
             string userAnswer;
 
 
             for (int i = 0; i < questions.Length; i++)
+                for (int j = 0; j< OtherAnswers.Length; j++)
             {
                 Write(questions[i]);
+                    Write(OtherAnswers[j]);
                 userAnswer = ReadLine();
                 if (userAnswer == answers[0])
                 {
@@ -51,35 +54,36 @@ namespace Games
             Random rand = new Random();
             int magicNumber = rand.Next(0, 100);
             int userNumber = 0;
-            int count = 0;
-            do
-            {
-                WriteLine("Введи число ");
-                userNumber = Int32.Parse(ReadLine());
-                count++;
-                if (userNumber < magicNumber)
-                {
-                    WriteLine("Введенное число меньше загаданного");
+            int count = 1; int i = 0;
+            int k = Convert.ToInt32(Console.ReadLine());
+            while (count <= 3)
 
-                }
-                else if (userNumber > magicNumber)
+                if (i == k)
                 {
-                    WriteLine("Введенное число больше загаданного");
-
-                }
-                else if (userNumber == magicNumber)
-                {
-                    WriteLine("Введенное число больше загаданного");
-                    WriteLine($"Тебе понадобилось {count} попыок");
+                    Console.WriteLine("Правильно!");
+                    break;
                 }
 
-                
+                else
+                {
+                    count++;
+                    if (count == 4)
+                    {
+                        Console.WriteLine("Вы не угадали число. Правильный ответ " + i + "");
 
-            }
+                    }
+                    Console.WriteLine("Нет это не число " + k + "! Попытка номер" + count + "");
+                    k = Convert.ToInt32(Console.ReadLine());
 
-            while (userNumber != magicNumber);
+                }
+
+
 
         }
+
+
+
+
         static void Main(string[] args)
         {
             startQuiz();
@@ -87,3 +91,4 @@ namespace Games
         }
     }
 }
+
